@@ -1,0 +1,48 @@
+function consultarOperador(operador) {
+    let cargos = {
+        "tigo": {
+            "cargoFijo": 45000,
+            "valorMinutoInternacional": 200,
+            "valorPaqueteDatos": 12000
+        },
+        "claro": {
+            "cargoFijo": 30000,
+            "valorMinutoInternacional": 100,
+            "valorPaqueteDatos": 18000
+        },
+        "movistar": {
+            "cargoFijo": 40000,
+            "valorMinutoInternacional": 250,
+            "valorPaqueteDatos": 8000
+        }
+    };
+
+    let mensaje;
+
+    if (cargos[operador]) {
+        const { cargoFijo, valorMinutoInternacional, valorPaqueteDatos } = cargos[operador];
+
+        mensaje = `Operador: ${operador}\n`;
+        mensaje += `Cargo fijo: ${cargoFijo}\n`;
+        mensaje += `Valor minuto internacional: ${valorMinutoInternacional}\n`;
+        mensaje += `Valor paquete de datos: ${valorPaqueteDatos}`;
+    } else {
+        mensaje = "Operador no válido. Por favor, ingrese 'claro', 'tigo' o 'movistar'.";
+    }
+
+    return mensaje; 
+}
+
+let cantidadOperadores = parseInt(prompt("¿Cuántos operadores desea consultar?"));
+let i = 0;
+
+while (i < cantidadOperadores) {
+    let operador = prompt(`Consulta ${i + 1}: Ingrese su operador (claro, tigo, movistar):`).toLowerCase();
+
+    let mensaje = consultarOperador(operador);
+
+    console.log(mensaje);
+    alert(mensaje);
+
+    i++;
+}
